@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="connection_error">No internet connection</string>
+    <string name="no_data">No movies data available</string>
+
+    <string name="overview_label">Overview:</string>
+    <string name="rating_label">Rating:</string>
+    <string name="date_label">Release date:</string>
+
+    <string name="sort_popular_label">Sort by popularity</string>
+    <string name="sort_top_rated_label">Sort by top rated</string>
+
+    <string name="poster_content_description">Movie poster</string>
+    <string name="video_thumbnail">video thumbnail</string>
+    <string name="trailers_label">Trailers:</string>
+    <string name="reviews_label">Reviews:</string>
+    <string name="videos_error_msg">No videos available</string>
+    <string name="reviews_error_msg">No reviews available</string>
+    <string name="star_button_cd">star button to save movie as favorite</string>
+    <string name="insert_movie_toast">  saved to favorites</string>
+    <string name="delete_movie_toast">  deleted from favorites</string>
+    <string name="favorites">Favorites</string>
+    <string name="popular_title">Popular movies</string>
+    <string name="top_rated_title">Top Rated movies</string>
+    <string name="favorites_title">Favorite movies</string>
+    <string name="play_icon">play icon</string>
+
+
+</resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="large_margin">24dp</dimen>
+    <dimen name="poster_width">130dp</dimen>
+    <dimen name="poster_height">194dp</dimen>
+    <dimen name="dark_bar_height">110dp</dimen>
+    <dimen name="light_bar_height">18dp</dimen>
+    <dimen name="mid_margin">16dp</dimen>
+    <dimen name="small_margin">8dp</dimen>
+    <dimen name="poster_frame_width">2dp</dimen>
+    <dimen name="title_max_width">250dp</dimen>
+    <dimen name="elevation">6dp</dimen>
+    <dimen name="caption_text">14sp</dimen>
+    <dimen name="title_text">22sp</dimen>
+    <dimen name="subtitle_text">18sp</dimen>
+    <dimen name="xLarge_margin">56dp</dimen>
+</resources>

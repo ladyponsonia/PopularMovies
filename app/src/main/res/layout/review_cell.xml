@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/review_author_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/subtitle"
+        android:textSize="@dimen/caption_text"
+        android:layout_marginTop="@dimen/mid_margin"
+        android:layout_marginEnd="@dimen/mid_margin"
+        android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/review_content_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/mid_margin"
+        android:layout_marginEnd="@dimen/mid_margin"
+        android:textIsSelectable="true" />
+
+</LinearLayout>
