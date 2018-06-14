@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/detail_scrollview"
     tools:context="com.example.android.popularmovies.DetailActivity">
 
     <android.support.constraint.ConstraintLayout

@@ -21,7 +21,7 @@ public class NetworkUtils {
 
     private static final String API_BASE_URL = "http://api.themoviedb.org/";
     private static final String API_KEY_PARAM = "api_key";
-    private static final String API_KEY = "myApiKey";
+    private static String API_KEY = BuildConfig.TMDB_API_KEY;
     private static final String API_MOVIE_PATH = "3/movie/";
 
     //build query URL depending on sort mode

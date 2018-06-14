@@ -13,9 +13,11 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.support.v4.content.AsyncTaskLoader;
 import android.widget.Toast;
@@ -41,6 +43,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     private RecyclerView videosRV;
     private RecyclerView reviewsRV;
     private CheckBox starCB;
+    private ScrollView detailScroll;
 
     private Movie selectedMovie;
     private String[] movieVideosReviews = null; //variable to cache the data
@@ -55,6 +58,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     private static final String API_VIDEOS_MODE = "/videos";
     private static final String API_REVIEWS_MODE = "/reviews";
     private static final String YOUTUBE_BASE_URL = "https://www.youtube.com/watch?v=";
+    private static final String SCROLL_KEY = "scrollPosition";
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -63,16 +67,17 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         setContentView(R.layout.activity_detail);
 
         //get views
-        posterThumbIV =  (ImageView) findViewById(R.id.poster_thumb_iv);
-        titleTV = (TextView) findViewById(R.id.movie_title_tv);
-        overviewTV = (TextView) findViewById(R.id.movie_overview_tv);
-        ratingTV = (TextView) findViewById(R.id.movie_rating_tv);
-        dateTV =  (TextView) findViewById(R.id.movie_date_tv);
-        videosRV = (RecyclerView) findViewById(R.id.videos_rv);
-        reviewsRV = (RecyclerView) findViewById(R.id.reviews_rv);
-        videoErrorTV = (TextView) findViewById(R.id.videos_error_tv);
-        reviewErrorTV =  (TextView) findViewById(R.id.reviews_error_tv);
-        starCB = (CheckBox)findViewById(R.id.star_button);
+        posterThumbIV = findViewById(R.id.poster_thumb_iv);
+        titleTV = findViewById(R.id.movie_title_tv);
+        overviewTV = findViewById(R.id.movie_overview_tv);
+        ratingTV = findViewById(R.id.movie_rating_tv);
+        dateTV =  findViewById(R.id.movie_date_tv);
+        videosRV = findViewById(R.id.videos_rv);
+        reviewsRV = findViewById(R.id.reviews_rv);
+        videoErrorTV = findViewById(R.id.videos_error_tv);
+        reviewErrorTV = findViewById(R.id.reviews_error_tv);
+        starCB = findViewById(R.id.star_button);
+        detailScroll = (ScrollView)findViewById(R.id.detail_scrollview);
 
         //get parcelable
         Intent intentReceived = getIntent();
@@ -245,7 +250,6 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         //open trailer with youtube or browser with help from
         //https://stackoverflow.com/questions/1572107/android-intent-for-playing-video
         Intent videoIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(movieURL));
-        //videoIntent.setDataAndType(Uri.parse(movieURL), "video/mp4");
         startActivity(videoIntent);
     }
 
@@ -337,6 +341,30 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             showReviewsErrorMsg(true);
         } else {
             showReviewsErrorMsg(false);
+        }
+    }
+
+    //save scroll position
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d ("DETAIL_ACTIVITY", "entered onSaveInstanceState");
+        outState.putIntArray(SCROLL_KEY,
+                new int[] {detailScroll.getScrollX(), detailScroll.getScrollY()});
+    }
+
+    //some code from https://asishinwp.wordpress.com/2013/04/15/save-scrollview-position-resume-scrollview-from-that-position/
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        final int[] scrollPosition = savedInstanceState.getIntArray(SCROLL_KEY);
+        Log.d ("DETAIL_ACTIVITY", "scrollPosition: " + scrollPosition[0] + "," + scrollPosition[1]);
+        if(scrollPosition != null) {
+            detailScroll.postDelayed(new Runnable() {
+                public void run() {
+                    detailScroll.scrollTo(scrollPosition[0], scrollPosition[1]);
+                }
+            }, 300);
         }
     }
 }

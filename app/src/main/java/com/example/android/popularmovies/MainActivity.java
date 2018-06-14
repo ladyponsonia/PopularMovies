@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         setContentView(R.layout.activity_main);
 
         //get recyclerView
-        mainRV = (RecyclerView) findViewById(R.id.main_rv);
+        mainRV = findViewById(R.id.main_rv);
         //get error textview
-        errorTV = (TextView)findViewById(R.id.error_msg_tv);
+        errorTV = findViewById(R.id.error_msg_tv);
 
         //get shared preference for sort
         String sortSelection;
